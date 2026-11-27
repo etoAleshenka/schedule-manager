@@ -13,6 +13,10 @@ import ru.university.schedule.model.TimeSlot;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Набор исходных данных университета для демонстрации и тестирования:
+ * 2-й курс (группы 7.1, 7.2) и 3-й курс (группы 8.1, 8.2).
+ */
 public record UniversityDataset(
         List<Group> groups,
         List<Teacher> teachers,
@@ -21,6 +25,7 @@ public record UniversityDataset(
         List<CurriculumItem> curriculum,
         List<TimeSlot> availableSlots
 ) {
+    /** * Создаёт стандартный учебный набор данных с группами 7.1, 7.2, 8.1, 8.2. */
     public static UniversityDataset createDefault() {
         Course course2 = new Course(2, "Программная инженерия");
         Course course3 = new Course(3, "Информационные системы");
@@ -47,6 +52,9 @@ public record UniversityDataset(
         Room r201 = new Room("201", 25);
         Room r301 = new Room("301", 32);
 
+        // Нагрузка распределена равномерно по предметам 2-го и 3-го курса.
+        // Группы 8.1 (27 чел.) и 8.2 (30 чел.) помещаются только в ауд. 301 (32 места),
+        // а их суммарная нагрузка (16 пар) на 1 слот больше, чем слотов в неделе (15).
         List<CurriculumItem> curriculum = List.of(
                 new CurriculumItem(g71, oop, tIvanov, 2),
                 new CurriculumItem(g71, math, tPetrova, 2),

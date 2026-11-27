@@ -3,10 +3,14 @@ package ru.university.schedule.model;
 import java.util.Comparator;
 import java.util.Objects;
 
+/** * Временной слот в сетке расписания (день недели и номер пары). */
 public record TimeSlot(StudyDay day, int pairNumber) implements Comparable<TimeSlot> {
+    /** Минимальный номер пары. */
     public static final int MIN_PAIR = 1;
+    /** Максимальный номер пары. */
     public static final int MAX_PAIR = 6;
 
+    /** * Проверяет корректность дня и номера пары. */
     public TimeSlot {
         Objects.requireNonNull(day, "День недели не может быть null");
         if (pairNumber < MIN_PAIR || pairNumber > MAX_PAIR) {

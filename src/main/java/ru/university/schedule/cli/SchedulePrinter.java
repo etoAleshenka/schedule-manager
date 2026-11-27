@@ -10,8 +10,10 @@ import ru.university.schedule.sim.SimulationReport;
 
 import java.util.List;
 
+/** * Отдельный слой вывода расписания и журнала событий в консоль. */
 public class SchedulePrinter {
 
+    /** * Печатает отчёт о симуляции: журнал событий и сводку. */
     public void printSimulationReport(SimulationReport report) {
         System.out.println("=== Журнал симуляции ===");
         for (int i = 0; i < report.events().size(); i++) {
@@ -29,6 +31,7 @@ public class SchedulePrinter {
         System.out.println();
     }
 
+    /** * Печатает расписание для всех указанных групп. */
     public void printScheduleByGroups(Schedule schedule, List<Group> groups) {
         System.out.println("=== Расписание по группам ===");
         for (Group group : groups) {
@@ -45,6 +48,7 @@ public class SchedulePrinter {
         System.out.println();
     }
 
+    /** * Печатает список конфликтов по окнам в расписании. */
     public void printWindowConflicts(Schedule schedule) {
         List<Conflict> windowConflicts = schedule.findAllWindowConflicts();
         System.out.println("=== Проверка окон в расписании ===");

@@ -18,6 +18,7 @@ import ru.university.schedule.sim.UniversityDataset;
 import java.util.List;
 import java.util.Scanner;
 
+/** * Консольное приложение для запуска симуляции и ручного управления расписанием. */
 public class ConsoleApp {
     private static final long DEFAULT_SEED = 42L;
 
@@ -25,12 +26,17 @@ public class ConsoleApp {
     private final SchedulePrinter printer;
     private Schedule currentSchedule;
 
+    /** * Создаёт консольное приложение со стандартным набором данных. */
     public ConsoleApp() {
         this.dataset = UniversityDataset.createDefault();
         this.printer = new SchedulePrinter();
         this.currentSchedule = new Schedule();
     }
 
+    /**
+     * Точка входа в программу.
+     * Если передан аргумент {@code --auto [seed]}, запускает автосимуляцию без меню.
+     */
     public static void main(String[] args) {
         ConsoleApp app = new ConsoleApp();
         if (args.length > 0 && "--auto".equals(args[0])) {
@@ -41,6 +47,7 @@ public class ConsoleApp {
         app.runInteractive();
     }
 
+    /** * Запускает автоматическую симуляцию по заданному seed и печатает отчёт. */
     public void runAutoSimulation(long seed) {
         System.out.println("Запуск симуляции с seed = " + seed);
         ScheduleSimulator simulator = new ScheduleSimulator(seed);

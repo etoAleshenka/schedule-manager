@@ -1,5 +1,6 @@
 package ru.university.schedule.model;
 
+/** * Учебный день недели. */
 public enum StudyDay {
     MONDAY("Понедельник"),
     TUESDAY("Вторник"),
@@ -14,6 +15,7 @@ public enum StudyDay {
         this.displayName = displayName;
     }
 
+    /** * Возвращает русское название дня недели. */
     public String getDisplayName() {
         return displayName;
     }

@@ -1,5 +1,6 @@
 package ru.university.schedule.model;
 
+/** * Типы конфликтов в расписании. */
 public enum ConflictType {
     TEACHER_BUSY("Преподаватель занят в это время"),
     GROUP_BUSY("Группа занята в это время"),
@@ -13,6 +14,7 @@ public enum ConflictType {
         this.description = description;
     }
 
+    /** * Возвращает человекочитаемое описание типа конфликта. */
     public String getDescription() {
         return description;
     }

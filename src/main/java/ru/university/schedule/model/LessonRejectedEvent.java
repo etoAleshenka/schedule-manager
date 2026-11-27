@@ -2,6 +2,7 @@ package ru.university.schedule.model;
 
 import java.util.List;
 
+/** * Событие отклонения занятия из-за обнаруженных конфликтов. */
 public record LessonRejectedEvent(Lesson lesson, List<Conflict> conflicts) implements ScheduleEvent {
     public LessonRejectedEvent {
         conflicts = List.copyOf(conflicts);

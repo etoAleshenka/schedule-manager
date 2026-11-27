@@ -2,10 +2,12 @@ package ru.university.schedule.model;
 
 import java.util.Objects;
 
+/** * Базовый абстрактный класс для участников учебного процесса. */
 public abstract class Person {
     private final String id;
     private final String fullName;
 
+    /** * Создаёт участника учебного процесса. */
     protected Person(String id, String fullName) {
         if (id == null || id.isBlank()) {
             throw new IllegalArgumentException("Идентификатор не может быть пустым");
@@ -17,14 +19,17 @@ public abstract class Person {
         this.fullName = fullName.trim();
     }
 
+    /** * Возвращает идентификатор участника. */
     public String getId() {
         return id;
     }
 
+    /** * Возвращает полное имя участника. */
     public String getFullName() {
         return fullName;
     }
 
+    /** * Возвращает роль участника в учебном процессе. */
     public abstract String getRole();
 
     @Override

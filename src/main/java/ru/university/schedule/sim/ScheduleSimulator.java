@@ -16,21 +16,25 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
+/** * Симулятор автоматического составления расписания с воспроизводимым генератором случайных чисел. */
 public class ScheduleSimulator {
     private static final int RANDOM_PROBES_PER_PAIR = 3;
 
     private final long seed;
     private final Random random;
 
+    /** * Создаёт симулятор с заданным зерном генератора случайных чисел. */
     public ScheduleSimulator(long seed) {
         this.seed = seed;
         this.random = new Random(seed);
     }
 
+    /** * Возвращает зерно генератора, использованное при создании симулятора. */
     public long getSeed() {
         return seed;
     }
 
+    /** * Запускает симуляцию размещения всех занятий из учебного плана. */
     public SimulationReport run(UniversityDataset dataset) {
         Objects.requireNonNull(dataset, "Набор данных не может быть null");
         Schedule schedule = new Schedule();
@@ -72,6 +76,7 @@ public class ScheduleSimulator {
             return false;
         }
 
+        // Сначала делаем несколько случайных попыток (как "бот"), чтобы в журнале отражались реальные коллизии
         for (int attempt = 0; attempt < RANDOM_PROBES_PER_PAIR; attempt++) {
             TimeSlot slot = slots.get(random.nextInt(slots.size()));
             Room room = rooms.get(random.nextInt(rooms.size()));
@@ -83,6 +88,7 @@ public class ScheduleSimulator {
             }
         }
 
+        // Если случайные попытки не удались, перебираем все комбинации в перемешанном порядке
         List<TimeSlot> shuffledSlots = new ArrayList<>(slots);
         List<Room> shuffledRooms = new ArrayList<>(rooms);
         Collections.shuffle(shuffledSlots, random);

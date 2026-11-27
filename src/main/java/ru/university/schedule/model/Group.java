@@ -5,11 +5,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+/** * Учебная группа студентов одного курса. */
 public class Group {
     private final String name;
     private final Course course;
     private final List<Student> students = new ArrayList<>();
 
+    /** * Создаёт учебную группу. */
     public Group(String name, Course course) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Название группы не может быть пустым");
@@ -18,6 +20,7 @@ public class Group {
         this.course = Objects.requireNonNull(course, "Курс не может быть null");
     }
 
+    /** * Добавляет студента в группу, если его ещё нет в списке. */
     public void addStudent(Student student) {
         Objects.requireNonNull(student, "Студент не может быть null");
         if (!students.contains(student)) {
@@ -25,18 +28,22 @@ public class Group {
         }
     }
 
+    /** * Возвращает название группы. */
     public String getName() {
         return name;
     }
 
+    /** * Возвращает курс группы. */
     public Course getCourse() {
         return course;
     }
 
+    /** * Возвращает количество студентов в группе. */
     public int getSize() {
         return students.size();
     }
 
+    /** * Возвращает неизменяемый список студентов группы. */
     public List<Student> getStudents() {
         return Collections.unmodifiableList(students);
     }

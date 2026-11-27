@@ -2,7 +2,9 @@ package ru.university.schedule.model;
 
 import java.util.Objects;
 
+/** * Занятие, размещённое в расписании. */
 public record Lesson(Group group, Subject subject, Teacher teacher, Room room, TimeSlot slot) {
+    /** * Проверяет, что все поля занятия заданы. */
     public Lesson {
         Objects.requireNonNull(group, "Группа не может быть null");
         Objects.requireNonNull(subject, "Предмет не может быть null");

@@ -1,6 +1,8 @@
 package ru.university.schedule.model;
 
+/** * Учебная аудитория с ограниченной вместимостью. */
 public record Room(String number, int capacity) {
+    /** * Проверяет корректность номера и вместимости аудитории. */
     public Room {
         if (number == null || number.isBlank()) {
             throw new IllegalArgumentException("Номер аудитории не может быть пустым");

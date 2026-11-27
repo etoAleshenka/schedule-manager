@@ -6,6 +6,7 @@ import ru.university.schedule.model.ScheduleEvent;
 
 import java.util.List;
 
+/** * Результат работы симулятора составления расписания. */
 public record SimulationReport(
         Schedule schedule,
         List<ScheduleEvent> events,
